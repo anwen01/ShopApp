@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ></WebView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="#fff"
+            >
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/leftbackbutton_titlebar_pressed"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="详情"
+                android:layout_marginTop="20dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_alignBottom="@id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            >
+            <Button
+                android:id="@+id/addshop"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="加入购物车"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:background="@drawable/jianbian"
+                />
+            <Button
+                android:id="@+id/guomai"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="立刻购买"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:background="@drawable/jianbian"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

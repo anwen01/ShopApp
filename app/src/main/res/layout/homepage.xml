@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@drawable/jianbian"
+        >
+        <ImageView
+            android:id="@+id/iv_saoyisao"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/f1_saoyisao"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/sousuo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="      寻找宝贝、店铺"
+                android:textColorHint="#fff"
+                android:theme="@style/MyEditText"
+                />
+            <ImageView
+                android:src="@mipmap/f1_sousuo"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                />
+            <ImageView
+                android:id="@+id/xiangji"
+                android:src="@mipmap/f1_xiangji"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <com.yalantis.phoenix.PullToRefreshView
+        android:id="@+id/pull"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    </com.yalantis.phoenix.PullToRefreshView>
+
+</LinearLayout>
