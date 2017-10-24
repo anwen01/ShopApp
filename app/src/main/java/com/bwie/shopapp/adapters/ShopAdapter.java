@@ -53,7 +53,6 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             if (position>0){
                 if (list.get(position).getStore_id().equals(list.get(position-1).getStore_id())){
                     myViewHolder.ll.setVisibility(View.GONE);
-                    System.out.println("11111111111111111");
                 }else{
                     System.out.println("xianshixianshixian================="+list.get(position).getStore_id());
                     myViewHolder.ll.setVisibility(View.VISIBLE);
@@ -61,6 +60,8 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }else{
                 myViewHolder.ll.setVisibility(View.VISIBLE);
             }
+
+
 
 
             myViewHolder.shopname.setText(list.get(position).getStore_name());
@@ -149,6 +150,35 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     notifyDataSetChanged();
                 }
             });
+            //减的操作
+            myViewHolder.minus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int num = Integer.valueOf(list.get(position).getGoods_num());
+                    if (num>1){
+                        num--;
+                        list.get(position).setGoods_num(num+"");
+                        notifyDataSetChanged();
+                        if (listener!=null){
+                            listener.setNumListener(position,list.get(position).getCart_id(),num);
+                        }
+
+                    }
+                }
+            });
+            //加的操作
+            myViewHolder.add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int num = Integer.valueOf(list.get(position).getGoods_num());
+                    num++;
+                    list.get(position).setGoods_num(num+"");
+                    notifyDataSetChanged();
+                    if (listener!=null){
+                        listener.setNumListener(position,list.get(position).getCart_id(),num);
+                    }
+                }
+            });
 
         }
 
@@ -185,6 +215,18 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.onRefershListener = listener ;
     }
 
+
+    //加减的接口
+    public SetOnNumListener listener;
+    public void setOnNumListener(SetOnNumListener listener){
+        this.listener=listener;
+    }
+
+    public interface SetOnNumListener{
+        void setNumListener(int position,String cardid,int count);
+    }
+
+    //删除的接口
     public OnDeleteListener onDeleteListener;
     public void setOnDeleteListener(OnDeleteListener onDeleteListener){
         this.onDeleteListener=onDeleteListener;
@@ -199,7 +241,7 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
-        ImageView shopselect,goodselect,goodspic,goodsdele;
+        ImageView shopselect,goodselect,goodspic,goodsdele,minus,add;
         TextView shopname,goodname,goodsprice,goodsnum;
         LinearLayout ll;
         public MyViewHolder(View itemView) {
@@ -212,7 +254,9 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             goodsprice=itemView.findViewById(R.id.tv_item_shopcart_cloth_price);
             goodsnum=itemView.findViewById(R.id.et_item_shopcart_cloth_num);
             goodsdele=itemView.findViewById(R.id.iv_item_shopcart_cloth_delete);
-           ll= itemView.findViewById(R.id.ll_shopcart_header);
+            ll= itemView.findViewById(R.id.ll_shopcart_header);
+            minus=itemView.findViewById(R.id.iv_group_minus);
+            add=itemView.findViewById(R.id.iv_group_add);
 
         }
     }

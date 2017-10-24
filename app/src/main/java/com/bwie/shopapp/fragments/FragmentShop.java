@@ -174,6 +174,7 @@ public class FragmentShop extends Fragment{
                             }
                         });
 
+
                         shopAdapter.setOnRefershListener(new ShopAdapter.OnRefershListener() {
                             @Override
                             public void onRefersh(boolean isSelect, List<ShopInfoBean.DatasBean.CartListBean.GoodsBean> list) {

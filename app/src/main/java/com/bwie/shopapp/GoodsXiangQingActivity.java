@@ -74,8 +74,7 @@ public class GoodsXiangQingActivity extends AppCompatActivity{
         name = intent.getStringExtra("name");
         price = intent.getStringExtra("price");
         //list = (List<SouSuoBean.DatasBean.GoodsListBean>) intent.getSerializableExtra("soubean");
-        SharedPreferences preferences2 = getSharedPreferences("config", Context.MODE_PRIVATE);
-        key2 = preferences2.getString("key", "");
+
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("http://192.168.23.144/index.php?act=goods&op=index&goods_id="+goods_id);
@@ -88,10 +87,8 @@ public class GoodsXiangQingActivity extends AppCompatActivity{
                 return true;
             }
         });
-        if (key2.length()<=0){
-            Intent intent1 = new Intent(GoodsXiangQingActivity.this, LoginZhuceActivity.class);
-            startActivity(intent1);
-        }
+
+
             view1 = View.inflate(GoodsXiangQingActivity.this, R.layout.addgouwuche, null);
             //定义PopupWindow 将布局放进来
             popupWindow = new PopupWindow(view1, ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
@@ -138,8 +135,16 @@ public class GoodsXiangQingActivity extends AppCompatActivity{
                     but_queding.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            addSuccess();
-                            popupWindow.dismiss();
+                            SharedPreferences preferences2 = getSharedPreferences("config", Context.MODE_PRIVATE);
+                            key2 = preferences2.getString("key", "");
+                            if (key2.length()<=0){
+                                Intent intent1 = new Intent(GoodsXiangQingActivity.this, LoginZhuceActivity.class);
+                                startActivity(intent1);
+                            }else{
+                                addSuccess();
+                                popupWindow.dismiss();
+                            }
+
                         }
                     });
                     //取消
@@ -157,13 +162,21 @@ public class GoodsXiangQingActivity extends AppCompatActivity{
         guomai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(GoodsXiangQingActivity.this, Dingdan1Activity.class);
-                intent1.putExtra("list",(Serializable) list);
-                intent1.putExtra("num",content+"");
-                intent1.putExtra("tu",tu);
-                intent1.putExtra("name",name);
-                intent1.putExtra("price",price);
-                startActivity(intent1);
+                SharedPreferences preferences2 = getSharedPreferences("config", Context.MODE_PRIVATE);
+                key2 = preferences2.getString("key", "");
+                if (key2.length()<=0){
+                    Intent intent1 = new Intent(GoodsXiangQingActivity.this, LoginZhuceActivity.class);
+                    startActivity(intent1);
+                }else{
+                    Intent intent1 = new Intent(GoodsXiangQingActivity.this, Dingdan1Activity.class);
+                    intent1.putExtra("list",(Serializable) list);
+                    intent1.putExtra("num",content+"");
+                    intent1.putExtra("tu",tu);
+                    intent1.putExtra("name",name);
+                    intent1.putExtra("price",price);
+                    startActivity(intent1);
+                }
+
             }
         });
 

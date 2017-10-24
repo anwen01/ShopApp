@@ -142,18 +142,32 @@
                         android:gravity="center_vertical"
                         >
 
-
+                        <ImageView
+                            android:id="@+id/iv_group_minus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/shopcart_minus_grey"
+                            />
                         <TextView
                             android:id="@+id/et_item_shopcart_cloth_num"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:paddingBottom="2dp"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="20dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
                             android:paddingTop="2dp"
                             android:text="1"
                             android:textColor="#000" />
+
+                        <ImageView
+                            android:id="@+id/iv_group_add"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/shopcart_add_red"
+                            android:layout_marginLeft="5dp"
+                            />
+
 
 
                     </LinearLayout>
